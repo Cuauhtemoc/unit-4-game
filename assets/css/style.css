@@ -1,0 +1,9 @@
+body{
+    font-size: 1em;
+    background-image: url(../images/starwars-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.card-img{
+    height:  100%;
+}
