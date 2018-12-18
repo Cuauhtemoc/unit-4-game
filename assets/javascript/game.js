@@ -96,7 +96,7 @@ $(document).ready(function(){
             else if (updateHealthDefender < 0)
             {
                 $("#defender").empty();
-                $("#defender").text("Choose your next opponent")
+                $("#defender").text("Choose your next opponent");
                 enemySelected = false;
             }
         }
@@ -130,7 +130,7 @@ $(document).ready(function(){
                 $(this).attr("id", "defenderChoice");
                 enemySelected = true;
             }
-        } 
+        }
     })
     game.shuffle(game.characters);
     game.gameInitialize();

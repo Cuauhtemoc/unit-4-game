@@ -1,8 +1,8 @@
-body{
-    font-size: 1em;
+html, body{
     background-image: url(../images/starwars-bg.png);
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;
 }
 .card-img{
     height:  100%;
