@@ -38,8 +38,6 @@ $(document).ready(function(){
             $("#battle-log-defender").empty();
             characterSelected = false;
             enemySelected = false;
-            console.log(enemySelected);
-            console.log(characterSelected);
             for(i = 0; i < 4; i++)
             {
                 var card = $("<button>");
@@ -77,10 +75,9 @@ $(document).ready(function(){
             $("#choice").attr("health-points", updateHealthPlayer);
             $("#defenderChoice .card-text").text("Health Points: " + updateHealthDefender);
             $("#defenderChoice").attr("health-points", updateHealthDefender);
-
             $("#battle-log-attacker").text("The player attacked for " + $("#choice").attr("attack-power"));
             $("#battle-log-defender").text("The defender attacked for " + $("#defenderChoice").attr("attack-power"));
-            if (updateHealthPlayer < 0)
+            if (updateHealthPlayer <= 0)
             {
                 $("#defender").empty();
                 $("#defender").text("Game Over ");
@@ -98,6 +95,17 @@ $(document).ready(function(){
                 $("#defender").empty();
                 $("#defender").text("Choose your next opponent");
                 enemySelected = false;
+                if($("#enemies").contents().length === 0){
+                    $("#defender").text("You Win!");
+                    var restart = $("<button>");
+                    restart.text("RESTART");
+                    restart.appendTo("#defender");
+                    restart.on("click", function()
+                    {
+                        game.reset();
+                        restart.detach();
+                    })
+                }
             }
         }
         else {
@@ -105,7 +113,6 @@ $(document).ready(function(){
         }
     })
     $(document).on("click", ".character-button", function(){
-        console.log(characterSelected);
         var selecton = $(this).attr("id");
         if(characterSelected === false){
             $(".character-button").each(function()
@@ -134,5 +141,4 @@ $(document).ready(function(){
     })
     game.shuffle(game.characters);
     game.gameInitialize();
-    console.log(game.characters);
 });
